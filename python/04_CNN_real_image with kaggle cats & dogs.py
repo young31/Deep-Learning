@@ -77,7 +77,7 @@ model.compile(optimizer='rmsprop',
 
 # In[5]:
 
-
+# if got error about pil~~, pip install image can solve that
 history = model.fit_generator(train_gen,
                              steps_per_epoch=100,
                              epochs = 10,
