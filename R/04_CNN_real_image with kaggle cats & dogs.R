@@ -91,3 +91,37 @@ history=model %>% fit_generator(
 
 model %>% save_model_hdf5('cats_dogs.h5')
 # m = load_model_hdf5('C:/Users/young/Desktop/R/cats_dogs.h5')
+
+
+
+# visualizing how to work each nodes
+## take one image
+img = image_load('kaggle_cat/test/cats/cat.1601.jpg', target_size = c(150, 150)) %>% 
+  image_to_array() %>% 
+  array_reshape(c(1,150,150,3))/255
+
+plot(as.raster(img[1,,,]))
+
+## take each nodes
+layer_outputs = lapply((model$layers[1:8]), function(layer) layer$output)
+activation_model = keras_model(inputs = model$input, outputs = layer_outputs)
+
+activations = activation_model %>% predict(img)
+
+## define function to plot result
+plot_channel = function(channel){
+  rotate = function(x) t(apply(x,2,rev))
+  image(rotate(channel),axes=F, asp=1, col=terrain.colors(16))
+}
+
+str(activations)
+
+## compare each nodes' result
+par(mfrow=c(2,3))
+plot_channel(activations[[1]][1,,,1])
+plot_channel(activations[[1]][1,,,7])
+plot_channel(activations[[1]][1,,,10])
+plot_channel(activations[[3]][1,,,1])
+plot_channel(activations[[3]][1,,,7])
+plot_channel(activations[[3]][1,,,10])
+

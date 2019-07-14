@@ -64,6 +64,8 @@ model.add(layers.Conv2D(32, activation='relu', kernel_size=3))
 model.add(layers.MaxPool2D(2))
 model.add(layers.Conv2D(32, activation='relu',  kernel_size=3))
 model.add(layers.MaxPool2D(2))
+model.add(layers.Conv2D(32, activation='relu',  kernel_size=3))
+model.add(layers.MaxPool2D(2))
 model.add(layers.Flatten())
 model.add(layers.Dense(256, activation = 'relu'))
 model.add(layers.Dense(1, activation='sigmoid'))
@@ -77,7 +79,7 @@ model.compile(optimizer='rmsprop',
 
 # In[5]:
 
-# if got error about pil~~, pip install image can solve that
+
 history = model.fit_generator(train_gen,
                              steps_per_epoch=100,
                              epochs = 10,
@@ -85,7 +87,7 @@ history = model.fit_generator(train_gen,
                              validation_steps=50)
 
 
-# In[7]:
+# In[6]:
 
 
 plt.plot(history.history['loss'])
@@ -97,7 +99,7 @@ plt.legend(['Train', 'Val'], loc='upper right')
 plt.show()
 
 
-# In[8]:
+# In[7]:
 
 
 plt.plot(history.history['acc'])
@@ -107,6 +109,43 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Val'], loc='upper left')
 plt.show()
+
+
+# In[8]:
+
+
+from keras import preprocessing
+
+
+# In[9]:
+
+
+img = preprocessing.image.load_img('C:/Users/young/Desktop/R/kaggle_cat/test/cats/cat.1601.jpg', 
+                               target_size = (150,150))
+img = preprocessing.image.img_to_array(img)
+img = np.reshape(img, (1,150,150,3))/255
+
+
+# In[10]:
+
+
+from keras.models import Model
+
+layer_outputs = [layer.output for layer in model.layers[:8]]
+activation_model = keras.models.Model(inputs = model.input, outputs=layer_outputs)
+
+activations = activation_model.predict(img)
+
+
+# In[11]:
+
+
+plt.matshow(activations[0][0,:,:,1])
+plt.matshow(activations[0][0,:,:,7])
+plt.matshow(activations[0][0,:,:,10])
+plt.matshow(activations[2][0,:,:,1])
+plt.matshow(activations[2][0,:,:,7])
+plt.matshow(activations[2][0,:,:,10])
 
 
 # In[ ]:
