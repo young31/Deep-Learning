@@ -1,8 +1,3 @@
-# Deep-Learning
-## Purpose: Practice building model with R and data management
-## reference book: Deep Learning with R
+# Goal
 
-## python folder is as same as R result(only difference in language)
-
-### I'm begginer. Please tell me you find better idea.
-### All models are not tuned. You can make it!!
+딥러닝을 공부하면서 학습한 점과 느낀 점을 정리하는 공간입니다.
