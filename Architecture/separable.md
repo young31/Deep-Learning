@@ -9,5 +9,39 @@
 
 이는 inception모듈과 결합해 xception모형을 만드는 근간이 되는 개념이다.
 
-
 코드는 아래와 같이 형성할 수 있다.
+
+```python
+model = keras.models.Sequential()
+
+model.add(layers.SeparableConv2D(filters=16, 
+                                 kernel_size=3, 
+                                 activation='relu',
+                                input_shape = (size,size,channel)))
+model.add(layers.SeparableConv2D(filters=16,
+                                kernel_size=3,
+                                activation='relu'))
+model.add(layers.SeparableConv2D(filters=16,
+                                kernel_size=3,
+                                activation='relu'))
+model.add(layers.SeparableConv2D(32, kernel_size=1, strides=2))
+
+model.add(layers.SeparableConv2D(filters=16,
+                                kernel_size=3,
+                                activation='relu'))
+model.add(layers.SeparableConv2D(filters=32,
+                                kernel_size=3,
+                                activation='relu'))
+model.add(layers.SeparableConv2D(filters=16,
+                                kernel_size=3,
+                                activation='relu'))
+model.add(layers.SeparableConv2D(32, kernel_size=1, strides=2))
+
+
+model.add(layers.MaxPooling2D(2))
+model.add(layers.GlobalMaxPooling2D())
+
+model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(classes, activation='softmax'))
+```
+
