@@ -4,13 +4,13 @@
 
 그림으로 보면 이해하기 쉽습니다.
 
-![incepotion01](C:\Users\young\Desktop\git\Deep-Learning\Architecture\images\incepotion01.png)
+![incepotion01](./images/incepotion01.png)
 
 
 
 위 와 같은 stem을 여러개 연결시켜 모형을 구성해 갑니다.
 
-![inception02](C:\Users\young\Desktop\git\Deep-Learning\Architecture\images\inception02.png)
+![inception02](./images/inception02.png)
 
 
 
