@@ -16,7 +16,7 @@
     -   classic activation(tanh, sigm)와 비교해서는 향상
     -   상황에 따라 다를 수 있음
 
-![LRELU](asset\LRELU.png)
+![LRELU](asset/LRELU.png)
 
 ## PReLU(2015)
 
@@ -25,7 +25,7 @@
 -   ReLU보다 성능 향상을 보였음
     -   특정 initializing method와 함께 사용하면 더 좋음
 
-![PRELU](asset\PRELU.png)
+![PRELU](asset/PRELU.png)
 
 ## SELU(2017)
 
@@ -35,7 +35,7 @@
 -   lecum normal initialization / alpha dropout과 함께 사용
 -   적용 사례가 많지는 않아 실제로 확인해 보면 좋을 듯
 
-![SELU](asset\SELU.png)
+![SELU](asset/SELU.png)
 
 ## SWISH(2017)
 
@@ -47,7 +47,7 @@
 -   실험에서 ReLU보다는 나은 점을 보여주지만 다른 activation들과는 아직 경쟁이 필요할 듯
     -   data analysis에는 왕도가 없다..
 
-![SWISH](asset\SWISH.png)
+![SWISH](asset/SWISH.png)
 
 ## GELU(2018)
 
@@ -58,9 +58,9 @@
 -   ReLU, ELU의 smooth버전이라고 볼 수도 있음
 -   momentum optimzier와 함께 사용하기를 권장
 
-![GELU](asset\GELU.png)
+![GELU](asset/GELU.png)
 
-![GELU2](asset\GELU2.png)
+![GELU2](asset/GELU2.png)
 
 ## MISH(2019)
 
