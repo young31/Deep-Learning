@@ -10,4 +10,4 @@ def gelu(x):
 
 
 def mish(x):
-    return x*tf.tanh(tf.softplus(x))
+    return x*tf.tanh(tf.math.softplus(x))
